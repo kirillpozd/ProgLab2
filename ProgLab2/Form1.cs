@@ -6,5 +6,26 @@ namespace ProgLab2
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void Exit(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddFigure(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearFigures(object sender, EventArgs e)
+        {
+
+        }
     }
 }
