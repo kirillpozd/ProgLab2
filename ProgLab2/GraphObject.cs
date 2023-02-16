@@ -8,27 +8,30 @@ using System.CodeDom;
 
 namespace ProgLab2;
 
-public class GrapgObject
+public class GraphObject
 {
     static Random r = new Random();
     int x, y, w, h;
     SolidBrush brush;
     Color c;
-    public int X { get => x; 
+    public int X { 
+        get => x; 
         set {
-            if (value < 0)
-                throw new ArgumentException("x<0!!");
+            if (value + w > MaxSize.Width || value < 0)
+                throw new ArgumentException("Выходит за границы X " + value);
             x = value;
         } 
     }
-    public int Y { get => y; set {
-            if (value < 0)
-                throw new ArgumentException("y<0!!");
+    public int Y { 
+        get => y; 
+        set {
+            if (value + h > MaxSize.Height || value < 0)
+                throw new ArgumentException("Выходит за границы Y " + value);
             y = value;
         } 
     }
     
-    public GrapgObject()
+    public GraphObject()
     {
         Color[] cols = { Color.Red, Color.Green, Color.Yellow, Color.Tomato, Color.Cyan };
         c = cols[r.Next(cols.Length)];
@@ -45,4 +48,5 @@ public class GrapgObject
         g.DrawRectangle(Pens.Black, x, y, w, h);
 
     }
+    static public Size MaxSize { get; set; }
 }
