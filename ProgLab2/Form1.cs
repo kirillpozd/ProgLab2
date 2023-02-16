@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace ProgLab2
 {
     public partial class Form1 : Form
@@ -18,10 +20,22 @@ namespace ProgLab2
             this.Close();
         }
 
+        List<GrapgObject> elements = new List<GrapgObject>();
+        int q = 100;
         private void AddFigure(object sender, EventArgs e)
         {
             elements.Add(new GrapgObject());
             panel1.Invalidate();
+            try
+            {
+                elements[1].X = q; 
+                elements[1].Y = q;
+                q -= 200;
+            }
+            catch(ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ClearFigures(object sender, EventArgs e)
@@ -34,7 +48,6 @@ namespace ProgLab2
 
         }
 
-        List<GrapgObject> elements = new List<GrapgObject>();
 
         private void PaintPanel(object sender, PaintEventArgs e)
         {

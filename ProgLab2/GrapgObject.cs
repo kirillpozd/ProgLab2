@@ -4,15 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.CodeDom;
 
 namespace ProgLab2;
 
-internal class GrapgObject
+public class GrapgObject
 {
     static Random r = new Random();
     int x, y, w, h;
     SolidBrush brush;
     Color c;
+    public int X { get => x; 
+        set {
+            if (value < 0)
+                throw new ArgumentException("x<0!!");
+            x = value;
+        } 
+    }
+    public int Y { get => y; set {
+            if (value < 0)
+                throw new ArgumentException("y<0!!");
+            y = value;
+        } 
+    }
+    
     public GrapgObject()
     {
         Color[] cols = { Color.Red, Color.Green, Color.Yellow, Color.Tomato, Color.Cyan };
